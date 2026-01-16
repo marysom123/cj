@@ -1,0 +1,44 @@
+# 微信小程序
+.DS_Store
+node_modules/
+
+# 云函数
+cloudfunctions/*/node_modules/
+cloudfunctions/*/.temp/
+cloudfunctions/*/.logs/
+
+# 微信开发者工具
+.project.config.json
+.private/
+
+# 日志
+*.log
+npm-debug.log*
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*~
+
+# 系统文件
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.user?
+
+# 测试覆盖率
+coverage/
+*.lcov
+
+# 构建产物
+dist/
+build/
+miniprogram_npm/
