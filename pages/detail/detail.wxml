@@ -1,0 +1,112 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view wx:if="{{!loading && record}}">
+    <!-- 顶部基本信息 -->
+    <view class="header-card card">
+      <view class="header-date">{{record.date}}</view>
+      <view class="header-tags">
+        <view class="tag tag-primary">{{record.reasonCategory}}</view>
+        <view class="tag tag-warning">{{record.duration}}</view>
+      </view>
+    </view>
+
+    <!-- 情绪曲线图 -->
+    <view class="section-card card">
+      <view class="section-title">情绪变化曲线</view>
+      <ec-canvas id="emotionChart" canvas-id="emotion-chart" ec="{{emotionChart}}"></ec-canvas>
+      <view class="chart-hint">点击曲线上的点查看对话</view>
+    </view>
+
+    <!-- 触发点 -->
+    <view class="section-card card">
+      <view class="section-title">⚡ 吵架触发点</view>
+      <view class="trigger-content">
+        <view class="trigger-time">{{triggerPoint.time}}</view>
+        <view class="trigger-text">{{triggerPoint.text}}</view>
+        <view class="trigger-type tag tag-danger">{{triggerPoint.type}}</view>
+      </view>
+    </view>
+
+    <!-- 双方需求分析 -->
+    <view class="section-card card">
+      <view class="section-title">💭 双方需求分析</view>
+      <view class="needs-container">
+        <view class="need-item wife">
+          <view class="need-role">👩 妻子</view>
+          <view class="need-content">
+            <view class="need-label">表层诉求：</view>
+            <view class="need-text">{{needs.wife.surface}}</view>
+            <view class="need-label">深层需求：</view>
+            <view class="need-text deep">{{needs.wife.deep}}</view>
+          </view>
+        </view>
+        <view class="need-item husband">
+          <view class="need-role">👨 丈夫</view>
+          <view class="need-content">
+            <view class="need-label">表层诉求：</view>
+            <view class="need-text">{{needs.husband.surface}}</view>
+            <view class="need-label">深层需求：</view>
+            <view class="need-text deep">{{needs.husband.deep}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 沟通模式 -->
+    <view class="section-card card">
+      <view class="section-title">💬 沟通模式分析</view>
+      <view class="pattern-content">
+        <view class="pattern-item">
+          <view class="pattern-label">妻子的风格：</view>
+          <view class="pattern-value">{{communication.wifeStyle}}</view>
+        </view>
+        <view class="pattern-item">
+          <view class="pattern-label">丈夫的风格：</view>
+          <view class="pattern-value">{{communication.husbandStyle}}</view>
+        </view>
+        <view class="pattern-item problem">
+          <view class="pattern-label">问题模式：</view>
+          <view class="pattern-value">{{communication.problem}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 高频词云 -->
+    <view class="section-card card">
+      <view class="section-title">☁️ 高频关键词</view>
+      <view class="keywords-cloud">
+        <view
+          class="keyword-item"
+          wx:for="{{keywords}}"
+          wx:key="word"
+          data-word="{{item}}"
+          bindtap="showKeywordContext"
+        >
+          <view class="keyword-word {{item.sentiment}}">{{item.word}}</view>
+          <view class="keyword-count">{{item.count}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部操作按钮 -->
+    <view class="action-bar">
+      <button class="action-btn btn-primary" bindtap="shareToPartner">分享给TA</button>
+      <button class="action-btn btn-secondary" bindtap="toggleResolved">
+        {{record.resolved ? '标记未解决' : '标记已解决'}}
+      </button>
+      <button class="action-btn btn-danger" bindtap="deleteRecord">删除</button>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-state">
+    <view class="loading-icon">🔄</view>
+    <view class="loading-text">加载中...</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{!loading && !record}}" class="empty-state">
+    <view class="empty-icon">❌</view>
+    <view class="empty-text">记录不存在</view>
+  </view>
+</view>

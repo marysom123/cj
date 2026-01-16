@@ -1,0 +1,151 @@
+/* pages/index/index.wxss */
+.stats-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #FFFFFF;
+}
+
+.stats-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 32rpx;
+}
+
+.stats-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 56rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 80rpx;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.records-section {
+  padding: 24rpx;
+}
+
+.record-card {
+  margin-bottom: 24rpx;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.record-card:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.record-date {
+  font-size: 28rpx;
+  color: #5A6C7D;
+  font-weight: 500;
+}
+
+.record-resolved {
+  font-size: 24rpx;
+  color: #4ECDC4;
+  display: flex;
+  align-items: center;
+}
+
+.record-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.record-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-duration {
+  font-size: 24rpx;
+  color: #95A5A6;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.record-emotions {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  padding: 24rpx;
+  background-color: #F8F9FA;
+  border-radius: 12rpx;
+}
+
+.emotion-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.emotion-label {
+  font-size: 24rpx;
+  color: #5A6C7D;
+  width: 100rpx;
+}
+
+.emotion-bar {
+  flex: 1;
+  height: 16rpx;
+  background-color: #E5E5E5;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.emotion-fill {
+  height: 100%;
+  border-radius: 8rpx;
+  transition: width 0.3s;
+}
+
+.emotion-fill.wife {
+  background: linear-gradient(90deg, #FF6B6B 0%, #FF8E8E 100%);
+}
+
+.emotion-fill.husband {
+  background: linear-gradient(90deg, #4ECDC4 0%, #7EDDD6 100%);
+}
+
+.emotion-value {
+  font-size: 24rpx;
+  color: #5A6C7D;
+  font-weight: 600;
+  width: 80rpx;
+  text-align: right;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #B0B0B0;
+  margin-top: 16rpx;
+}

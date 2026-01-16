@@ -1,0 +1,77 @@
+<!--pages/add/add.wxml-->
+<view class="container">
+  <!-- 文件选择区 -->
+  <view class="upload-section">
+    <view class="upload-card card">
+      <view class="upload-icon">📁</view>
+      <view class="upload-title">选择录音文件</view>
+      <view class="upload-hint">支持 mp3、m4a、wav 格式</view>
+
+      <button
+        class="upload-btn btn-primary"
+        bindtap="chooseAudio"
+        disabled="{{uploading}}"
+      >
+        {{uploading ? '处理中...' : '选择文件'}}
+      </button>
+
+      <!-- 已选择的文件信息 -->
+      <view wx:if="{{selectedFile}}" class="file-info">
+        <view class="file-name">{{selectedFile.name}}</view>
+        <view class="file-size">{{selectedFile.sizeText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 上传进度 -->
+  <view wx:if="{{uploading}}" class="progress-section card">
+    <view class="progress-title">{{statusText}}</view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress}}%"></view>
+    </view>
+    <view class="progress-text">{{progress}}%</view>
+  </view>
+
+  <!-- 处理步骤提示 -->
+  <view wx:if="{{!uploading && !selectedFile}}" class="steps-section">
+    <view class="step-item">
+      <view class="step-icon">1️⃣</view>
+      <view class="step-content">
+        <view class="step-title">选择录音</view>
+        <view class="step-desc">从手机中选择吵架录音文件</view>
+      </view>
+    </view>
+    <view class="step-item">
+      <view class="step-icon">2️⃣</view>
+      <view class="step-content">
+        <view class="step-title">语音识别</view>
+        <view class="step-desc">自动转写为文字（约30秒）</view>
+      </view>
+    </view>
+    <view class="step-item">
+      <view class="step-icon">3️⃣</view>
+      <view class="step-content">
+        <view class="step-title">AI分析</view>
+        <view class="step-desc">深度分析情绪和需求（约20秒）</view>
+      </view>
+    </view>
+    <view class="step-item">
+      <view class="step-icon">4️⃣</view>
+      <view class="step-content">
+        <view class="step-title">查看结果</view>
+        <view class="step-desc">获取完整的分析报告</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 使用说明 -->
+  <view class="tips-section card">
+    <view class="tips-title">💡 小贴士</view>
+    <view class="tips-content">
+      <view class="tip-item">• 使用手机自带"录音机"App录制吵架</view>
+      <view class="tip-item">• 录音完成后，再来这里选择文件</view>
+      <view class="tip-item">• 分析结果会保存在本地，保护隐私</view>
+      <view class="tip-item">• 建议在冷静后再查看分析结果</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,159 @@
+/* pages/add/add.wxss */
+.upload-section {
+  padding: 24rpx;
+}
+
+.upload-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64rpx 32rpx;
+}
+
+.upload-icon {
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+}
+
+.upload-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 16rpx;
+}
+
+.upload-hint {
+  font-size: 24rpx;
+  color: #95A5A6;
+  margin-bottom: 48rpx;
+}
+
+.upload-btn {
+  width: 480rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+}
+
+.upload-btn[disabled] {
+  background-color: #B0B0B0;
+  color: #FFFFFF;
+}
+
+.file-info {
+  margin-top: 48rpx;
+  padding: 32rpx;
+  background-color: #F8F9FA;
+  border-radius: 12rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.file-name {
+  font-size: 28rpx;
+  color: #2C3E50;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+  word-break: break-all;
+}
+
+.file-size {
+  font-size: 24rpx;
+  color: #95A5A6;
+}
+
+.progress-section {
+  margin: 24rpx;
+  padding: 48rpx 32rpx;
+  text-align: center;
+}
+
+.progress-title {
+  font-size: 28rpx;
+  color: #5A6C7D;
+  margin-bottom: 32rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 16rpx;
+  background-color: #E5E5E5;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8rpx;
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #95A5A6;
+}
+
+.steps-section {
+  padding: 48rpx 24rpx;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 48rpx;
+}
+
+.step-item:last-child {
+  margin-bottom: 0;
+}
+
+.step-icon {
+  font-size: 48rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 12rpx;
+}
+
+.step-desc {
+  font-size: 24rpx;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.tips-section {
+  margin: 24rpx;
+  padding: 32rpx;
+}
+
+.tips-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #F5A623;
+  margin-bottom: 24rpx;
+}
+
+.tips-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.tip-item {
+  font-size: 26rpx;
+  color: #5A6C7D;
+  line-height: 1.6;
+  padding-left: 16rpx;
+}

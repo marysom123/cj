@@ -1,0 +1,82 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 顶部统计卡片 -->
+  <view class="stats-card card">
+    <view class="stats-title">本月统计</view>
+    <view class="stats-content">
+      <view class="stat-item">
+        <view class="stat-value">{{monthlyCount}}</view>
+        <view class="stat-label">吵架次数</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-value">{{totalDuration}}</view>
+        <view class="stat-label">总时长(分)</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-value">{{topReason}}</view>
+        <view class="stat-label">主要原因</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="records-section">
+    <view wx:if="{{records.length > 0}}" class="records-list">
+      <view
+        class="record-card card"
+        wx:for="{{records}}"
+        wx:key="id"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="record-header">
+          <view class="record-date">{{item.date}}</view>
+          <view class="record-resolved" wx:if="{{item.resolved}}">
+            <text class="iconfont icon-check"></text> 已解决
+          </view>
+        </view>
+
+        <view class="record-body">
+          <view class="record-info">
+            <view class="record-reason tag tag-primary">{{item.reasonCategory}}</view>
+            <view class="record-duration">
+              <text class="iconfont icon-time"></text> {{item.duration}}
+            </view>
+          </view>
+
+          <view class="record-emotions">
+            <view class="emotion-item">
+              <text class="emotion-label">妻子:</text>
+              <view class="emotion-bar">
+                <view
+                  class="emotion-fill wife"
+                  style="width: {{item.wifeMaxIntensity * 10}}%"
+                ></view>
+              </view>
+              <text class="emotion-value">{{item.wifeMaxIntensity}}/10</text>
+            </view>
+            <view class="emotion-item">
+              <text class="emotion-label">丈夫:</text>
+              <view class="emotion-bar">
+                <view
+                  class="emotion-fill husband"
+                  style="width: {{item.husbandMaxIntensity * 10}}%"
+                ></view>
+              </view>
+              <text class="emotion-value">{{item.husbandMaxIntensity}}/10</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:else class="empty-state">
+      <view class="empty-icon">📝</view>
+      <view class="empty-text">还没有记录</view>
+      <view class="empty-hint">点击下方"添加"按钮开始记录</view>
+    </view>
+  </view>
+</view>
