@@ -179,15 +179,15 @@
   font-weight: 500;
 }
 
-.keyword-word.负面 {
+.keyword-word.negative {
   color: #FF6B6B;
 }
 
-.keyword-word.正面 {
+.keyword-word.positive {
   color: #4ECDC4;
 }
 
-.keyword-word.中性 {
+.keyword-word.neutral {
   color: #5A6C7D;
 }
 

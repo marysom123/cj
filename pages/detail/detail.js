@@ -1,6 +1,6 @@
 // pages/detail/detail.js
 const app = getApp();
-import * as echarts from '../../components/ec-canvas/echarts';
+const echarts = require('../../components/ec-canvas/echarts.min');
 
 Page({
   data: {

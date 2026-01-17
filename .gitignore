@@ -42,3 +42,4 @@ coverage/
 dist/
 build/
 miniprogram_npm/
+project.private.config.json

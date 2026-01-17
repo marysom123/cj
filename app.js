@@ -28,9 +28,63 @@ App({
   initLocalData() {
     const records = wx.getStorageSync('quarrel_records');
     if (!records) {
-      // 如果没有记录，初始化为空数组
-      wx.setStorageSync('quarrel_records', []);
-      console.log('初始化记录列表为空');
+      // 如果没有记录，初始化测试数据
+      const mockRecords = [
+        {
+          id: "20250117-001",
+          date: "2025-01-17 20:30",
+          audioFile: "吵架_孩子教育.mp3",
+          reasonCategory: "孩子教育",
+          duration: "03:00",
+          resolved: false,
+          wifeMaxIntensity: 9,
+          husbandMaxIntensity: 6,
+          analysis: {
+            emotionCurve: [],
+            triggerPoint: { text: "你看看现在几点了？", time: "00:15", type: "累积爆发" },
+            needsAnalysis: {
+              wife: { surface: "抱怨丈夫不管孩子", deep: "希望分担压力" },
+              husband: { surface: "辩解工作忙", deep: "希望被理解" }
+            },
+            communicationPattern: { wifeStyle: "情绪主导型", husbandStyle: "回避防御型", problem: "缺少倾听" },
+            keywords: [
+              { word: "孩子", count: 5, sentiment: "neutral" },
+              { word: "累", count: 3, sentiment: "negative" }
+            ],
+            reasonCategory: { category: "孩子教育", description: "围绕教育方式产生分歧" },
+            duration: { total: "03:00", effective: "02:30" }
+          },
+          createTime: Date.now(),
+        },
+        {
+          id: "20250116-001",
+          date: "2025-01-16 22:00",
+          audioFile: "吵架_家务分配.mp3",
+          reasonCategory: "家务分配",
+          duration: "02:15",
+          resolved: true,
+          wifeMaxIntensity: 7,
+          husbandMaxIntensity: 6,
+          analysis: {
+            emotionCurve: [],
+            triggerPoint: { text: "你回来就只知道玩手机", time: "00:10", type: "累积爆发" },
+            needsAnalysis: {
+              wife: { surface: "抱怨家务分配", deep: "希望分担家务" },
+              husband: { surface: "强调赚钱养家", deep: "希望工作被理解" }
+            },
+            communicationPattern: { wifeStyle: "情绪主导型", husbandStyle: "回避防御型", problem: "缺少沟通" },
+            keywords: [
+              { word: "家务", count: 4, sentiment: "neutral" },
+              { word: "累", count: 2, sentiment: "negative" }
+            ],
+            reasonCategory: { category: "家务分配", description: "家务分配不均" },
+            duration: { total: "02:15", effective: "02:00" }
+          },
+          createTime: Date.now() - 86400000,
+        },
+      ];
+      wx.setStorageSync('quarrel_records', mockRecords);
+      console.log('初始化测试数据，共', mockRecords.length, '条记录');
     } else {
       console.log('已有记录数:', records.length);
     }
@@ -38,8 +92,8 @@ App({
     const settings = wx.getStorageSync('quarrel_settings');
     if (!settings) {
       const defaultSettings = {
-        storageLocation: 'local', // local | cloud
-        notificationTime: 'after1hour', // immediately | after1hour | manually
+        storageLocation: 'local',
+        notificationTime: 'after1hour',
       };
       wx.setStorageSync('quarrel_settings', defaultSettings);
       console.log('初始化设置');
