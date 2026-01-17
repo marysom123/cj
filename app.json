@@ -20,21 +20,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "记录",
-        "iconPath": "images/list.png",
-        "selectedIconPath": "images/list-active.png"
+        "text": "记录"
       },
       {
         "pagePath": "pages/add/add",
-        "text": "添加",
-        "iconPath": "images/add.png",
-        "selectedIconPath": "images/add-active.png"
+        "text": "添加"
       },
       {
         "pagePath": "pages/settings/settings",
-        "text": "设置",
-        "iconPath": "images/settings.png",
-        "selectedIconPath": "images/settings-active.png"
+        "text": "设置"
       }
     ]
   },

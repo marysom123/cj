@@ -1,5 +1,6 @@
 // pages/index/index.js
 const app = getApp();
+const { initMockData } = require('../../utils/mock-data.js');
 
 Page({
   data: {
@@ -10,6 +11,15 @@ Page({
   },
 
   onLoad() {
+    console.log('首页加载');
+
+    // 开发模式：初始化测试数据（如果没有数据的话）
+    const records = app.getRecords();
+    if (records.length === 0) {
+      console.log('没有数据，初始化测试数据');
+      initMockData();
+    }
+
     this.loadRecords();
   },
 
@@ -23,6 +33,7 @@ Page({
    */
   loadRecords() {
     const records = app.getRecords();
+    console.log('加载记录:', records.length, '条');
 
     // 计算统计数据
     const monthlyCount = this.calculateMonthlyCount(records);

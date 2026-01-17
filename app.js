@@ -1,18 +1,25 @@
 // app.js
 App({
   onLaunch() {
-    // 初始化云开发环境
-    if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
-    } else {
-      wx.cloud.init({
-        env: 'your-env-id', // 请替换为你的云开发环境ID
-        traceUser: true,
-      });
-    }
+    console.log('小程序启动');
 
     // 检查本地存储，初始化数据
     this.initLocalData();
+
+    // 初始化云开发环境（如果配置了）
+    if (wx.cloud) {
+      try {
+        wx.cloud.init({
+          // env: 'your-env-id', // TODO: 替换为你的云开发环境ID
+          traceUser: true,
+        });
+        console.log('云开发初始化成功');
+      } catch (e) {
+        console.warn('云开发初始化失败，使用本地模式', e);
+      }
+    } else {
+      console.warn('当前基础库版本不支持云开发');
+    }
   },
 
   /**
@@ -21,7 +28,11 @@ App({
   initLocalData() {
     const records = wx.getStorageSync('quarrel_records');
     if (!records) {
+      // 如果没有记录，初始化为空数组
       wx.setStorageSync('quarrel_records', []);
+      console.log('初始化记录列表为空');
+    } else {
+      console.log('已有记录数:', records.length);
     }
 
     const settings = wx.getStorageSync('quarrel_settings');
@@ -31,6 +42,7 @@ App({
         notificationTime: 'after1hour', // immediately | after1hour | manually
       };
       wx.setStorageSync('quarrel_settings', defaultSettings);
+      console.log('初始化设置');
     }
   },
 
