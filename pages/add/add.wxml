@@ -1,5 +1,20 @@
 <!--pages/add/add.wxml-->
 <view class="container">
+  <!-- 云开发配置提示 -->
+  <view class="notice-section card">
+    <view class="notice-icon">⚠️</view>
+    <view class="notice-content">
+      <view class="notice-title">使用前需要配置云开发</view>
+      <view class="notice-text">
+        1. 点击"云开发"按钮开通云开发环境
+        2. 配置环境ID到 app.js 的 wx.cloud.init()
+        3. 部署 voice-recognize 和 ai-analysis 云函数
+        4. 配置API密钥（腾讯云、智谱AI）
+      </view>
+      <view class="notice-link" bindtap="showDeployGuide">查看详细配置指南 →</view>
+    </view>
+  </view>
+
   <!-- 文件选择区 -->
   <view class="upload-section">
     <view class="upload-card card">

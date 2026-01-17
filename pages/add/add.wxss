@@ -1,4 +1,43 @@
 /* pages/add/add.wxss */
+.notice-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 24rpx;
+  padding: 32rpx;
+  margin: 24rpx;
+  background-color: #FFF8E6;
+  border-left: 8rpx solid #F5A623;
+}
+
+.notice-icon {
+  font-size: 48rpx;
+  flex-shrink: 0;
+}
+
+.notice-content {
+  flex: 1;
+}
+
+.notice-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 16rpx;
+}
+
+.notice-text {
+  font-size: 26rpx;
+  color: #5A6C7D;
+  line-height: 1.8;
+  margin-bottom: 16rpx;
+}
+
+.notice-link {
+  font-size: 28rpx;
+  color: #4A90E2;
+  text-decoration: underline;
+}
+
 .upload-section {
   padding: 24rpx;
 }

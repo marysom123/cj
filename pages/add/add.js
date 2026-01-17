@@ -49,6 +49,19 @@ Page({
    * 开始分析流程
    */
   async startAnalysis(file) {
+    // 检查云开发环境
+    if (!wx.cloud) {
+      wx.showModal({
+        title: '提示',
+        content: '当前小程序不支持云开发功能。\n\n请先在微信开发者工具中：\n1. 点击"云开发"按钮\n2. 开通云开发环境\n3. 配置环境ID到app.js',
+        showCancel: false,
+      });
+      this.setData({
+        selectedFile: null,
+      });
+      return;
+    }
+
     this.setData({
       uploading: true,
       progress: 0,
@@ -215,5 +228,22 @@ Page({
     const sizes = ['B', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+  },
+
+  /**
+   * 显示部署指南
+   */
+  showDeployGuide() {
+    wx.showModal({
+      title: '云开发配置指南',
+      content: '详细配置步骤请查看项目中的 DEPLOYMENT.md 文档\n\n或者在微信开发者工具中：\n\n1. 点击"云开发"按钮\n2. 开通云开发环境（免费）\n3. 记录环境ID\n4. 修改app.js中的env配置\n5. 部署云函数\n6. 配置API密钥',
+      showCancel: true,
+      confirmText: '我知道了',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户已查看配置指南');
+        }
+      },
+    });
   },
 });
